@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.List;
 
@@ -35,18 +34,11 @@ public class CheckoutTest {
 
 
     EnumMap<SKU, List<Product>> map = checkout.getItemsBySku();
-    BigDecimal price =  ipd.getSku().getPriceStrategy().applyPriceRule(map);
-
-    assertEquals(map.size(), 3);
-    assertEquals(map.get(SKU.ATV).size(), 2);
-    assertEquals(map.get(SKU.VGA).size(), 1);
-    assertEquals(map.get(SKU.IPD).size(), 1);
+    assertEquals(3, map.size());
+    assertEquals(2, map.get(SKU.ATV).size());
+    assertEquals(1, map.get(SKU.VGA).size());
+    assertEquals(1, map.get(SKU.IPD).size());
     assertNull(map.get(SKU.MBP));
-    assertEquals(ipd.getSku().getPriceStrategy().applyPriceRule(map),Price.IPD_DEFAULT);
-
-
-
-
-
   }
+
 }
