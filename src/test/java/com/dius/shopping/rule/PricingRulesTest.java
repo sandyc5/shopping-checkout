@@ -1,4 +1,4 @@
-package rule;
+package com.dius.shopping.rule;
 
 import com.dius.shopping.constant.Price;
 import com.dius.shopping.domain.Product;
