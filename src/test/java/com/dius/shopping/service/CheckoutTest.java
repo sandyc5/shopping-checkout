@@ -1,5 +1,6 @@
 package com.dius.shopping.service;
 
+import com.dius.shopping.constant.Price;
 import com.dius.shopping.domain.Product;
 import com.dius.shopping.domain.SKU;
 import org.junit.Test;
@@ -19,10 +20,10 @@ public class CheckoutTest {
   @Test
   public void givenProductOrdersWhenGroupBySkuThenCorrectlyGrouped() {
 
-    Product atv = new Product(SKU.ATV, BigDecimal.valueOf(109.50));
-    Product vga = new Product(SKU.VGA, BigDecimal.valueOf(30.00));
-    Product ipd = new Product(SKU.IPD, BigDecimal.valueOf(549.99));
-    //Product mbp = new Product(SKU.MBP, BigDecimal.valueOf(1399.99));
+    Product atv = new Product(SKU.ATV, Price.ATV_DEFAULT);
+    Product vga = new Product(SKU.VGA, Price.VGA_DEFAULT);
+    Product ipd = new Product(SKU.IPD, Price.IPD_DEFAULT);
+    Product mbp = new Product(SKU.MBP, Price.MBP_DEFAULT);
 
 
     Checkout checkout = new Checkout();
@@ -41,7 +42,7 @@ public class CheckoutTest {
     assertEquals(map.get(SKU.VGA).size(), 1);
     assertEquals(map.get(SKU.IPD).size(), 1);
     assertNull(map.get(SKU.MBP));
-    assertEquals(ipd.getSku().getPriceStrategy().applyPriceRule(map),(BigDecimal.valueOf(549.99)));
+    assertEquals(ipd.getSku().getPriceStrategy().applyPriceRule(map),Price.IPD_DEFAULT);
 
 
 

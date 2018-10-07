@@ -1,5 +1,6 @@
 package com.dius.shopping.rule;
 
+import com.dius.shopping.constant.Price;
 import com.dius.shopping.domain.Product;
 import com.dius.shopping.domain.SKU;
 
@@ -18,11 +19,11 @@ public enum SKUPriceStrategy implements PricingRules {
     public BigDecimal applyPriceRule(EnumMap<SKU, List<Product>> items) {
       final List<Product> skuItems = items.get(SKU.IPD);
       if (Objects.nonNull(skuItems) && skuItems.size() > 4) {
-        return BigDecimal.valueOf(skuItems.size() * 499.99);
+        return BigDecimal.valueOf(skuItems.size()).multiply(Price.IPD_SPECIAL);
       } else if (Objects.nonNull(skuItems)){
-        return BigDecimal.valueOf(skuItems.size() * 549.99);
+        return BigDecimal.valueOf(skuItems.size()).multiply(Price.IPD_DEFAULT);
       } else {
-        return BigDecimal.valueOf(0);
+        return Price.ZERO;
       }
     }
   },
@@ -34,9 +35,9 @@ public enum SKUPriceStrategy implements PricingRules {
     public BigDecimal applyPriceRule(EnumMap<SKU , List<Product>> items) {
       final List<Product> mbpItems = items.get(SKU.MBP);
       if (Objects.nonNull(mbpItems)) {
-        return BigDecimal.valueOf(mbpItems.size() * 1399.99);
+        return BigDecimal.valueOf(mbpItems.size()).multiply(Price.MBP_DEFAULT);
       } else {
-        return BigDecimal.valueOf(0);
+        return Price.ZERO;
       }
     }
   },
