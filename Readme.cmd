@@ -50,3 +50,8 @@ Notes on implementation:
 - don't use any frameworks (rails, spring etc), or any external jars/gems (unless it's for testing or build/dependency mgt)
 
 When you've finished, send through the link to your github-repo. Happy coding
+
+Instructions
+-----------------
+
+This is a Maven project with unit tests.  Please run mvn clean test
