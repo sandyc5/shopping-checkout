@@ -9,6 +9,10 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A SKUPriceStrategy will be applied to the Enum SKU type to calculate the price rules for each type
+ * It applies the PricingRules to the ordered items for each SKU type
+ */
 public enum SKUPriceStrategy implements PricingRules {
   IPD_DISCOUNT("Super iPad Discount Rule") {
     /**
@@ -88,6 +92,4 @@ public enum SKUPriceStrategy implements PricingRules {
   public String getDescription() {
     return description;
   }
-
-
 }
