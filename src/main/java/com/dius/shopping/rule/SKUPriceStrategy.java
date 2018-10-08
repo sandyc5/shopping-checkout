@@ -47,7 +47,7 @@ public enum SKUPriceStrategy implements PricingRules {
      */
     @Override
     public BigDecimal applyPriceRule(EnumMap<SKU , List<Product>> items) {
-      return null;
+      return BigDecimal.ZERO;
     }
   },
   VGA_DISCOUNT("VGA adapter Discount Rule") {

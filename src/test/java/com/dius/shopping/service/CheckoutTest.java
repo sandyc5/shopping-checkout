@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class CheckoutTest {
     checkout.scan(vga);
     checkout.scan(ipd);
     //checkout.scan(mbp);
+
+    BigDecimal total = checkout.total();
 
 
     EnumMap<SKU, List<Product>> map = checkout.getItemsBySku();
