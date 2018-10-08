@@ -27,11 +27,8 @@ public class Checkout {
    ***/
   public BigDecimal total() {
     EnumMap<SKU, List<Product>> orders = getItemsBySku();
-
-    // orders.keySet().forEach(sku -> total.add(sku.getPriceStrategy().applyPriceRule(orders)));
-    double total = orders.keySet().stream().mapToDouble(sku-> sku.getPriceStrategy().applyPriceRule(orders).doubleValue()).sum();
-//https://stackoverflow.com/questions/22635945/adding-up-bigdecimals-using-streams
-    return BigDecimal.valueOf(total);
+    return orders.keySet().stream().map(sku-> sku.getPriceStrategy().applyPriceRule(orders)).
+            reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
   public EnumMap<SKU, List<Product>> getItemsBySku() {
