@@ -60,10 +60,13 @@ public enum SKUPriceStrategy implements PricingRules {
       final List<Product> mbpItems = items.get(SKU.MBP);
 
       if (Objects.nonNull(vgaItems) && Objects.nonNull(mbpItems)) {
-
+        final int vgaItemsToPrice = vgaItems.size() - mbpItems.size();
+        return (vgaItemsToPrice <= 0 ? BigDecimal.ZERO :
+                                        BigDecimal.valueOf(vgaItemsToPrice).multiply(Price.VGA_DEFAULT));
+      } else if (Objects.isNull(mbpItems) && Objects.nonNull(vgaItems)) {
+        return BigDecimal.valueOf(vgaItems.size()).multiply(Price.VGA_DEFAULT);
       }
-
-      return null;
+      return BigDecimal.ZERO;
     }
   };
 
