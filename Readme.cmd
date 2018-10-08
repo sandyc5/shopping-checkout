@@ -58,4 +58,11 @@ This is a Maven project with unit tests.  Please run mvn clean test
 
 Checkout
 
+   - Apply the pricing rules to the collection of items ordered at checkout.
+   - Return the total for the order.
+
 SKUPriceStrategy
+
+ - A SKUPriceStrategy will be applied to the Enum SKU type to calculate the price rules for each type
+ - It can apply the PricingRules to the ordered items for each SKU type
+
