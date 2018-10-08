@@ -55,3 +55,7 @@ Instructions
 -----------------
 
 This is a Maven project with unit tests.  Please run mvn clean test
+
+Checkout
+
+SKUPriceStrategy

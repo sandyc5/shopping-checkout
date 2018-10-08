@@ -9,8 +9,6 @@ public final class Price  {
   public static final BigDecimal IPD_SPECIAL = BigDecimal.valueOf(499.99);
   public static final BigDecimal MBP_DEFAULT = BigDecimal.valueOf(1399.99);
 
-  public static final BigDecimal ZERO = BigDecimal.valueOf(0);
-
   private Price() {
     throw new AssertionError();
   }

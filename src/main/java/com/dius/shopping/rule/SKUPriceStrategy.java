@@ -23,7 +23,7 @@ public enum SKUPriceStrategy implements PricingRules {
       } else if (Objects.nonNull(skuItems)){
         return BigDecimal.valueOf(skuItems.size()).multiply(Price.IPD_DEFAULT);
       } else {
-        return Price.ZERO;
+        return BigDecimal.ZERO;
       }
     }
   },
@@ -37,7 +37,7 @@ public enum SKUPriceStrategy implements PricingRules {
       if (Objects.nonNull(mbpItems)) {
         return BigDecimal.valueOf(mbpItems.size()).multiply(Price.MBP_DEFAULT);
       } else {
-        return Price.ZERO;
+        return BigDecimal.ZERO;
       }
     }
   },
@@ -56,6 +56,13 @@ public enum SKUPriceStrategy implements PricingRules {
      */
     @Override
     public BigDecimal applyPriceRule(EnumMap<SKU , List<Product>> items) {
+      final List<Product> vgaItems = items.get(SKU.VGA);
+      final List<Product> mbpItems = items.get(SKU.MBP);
+
+      if (Objects.nonNull(vgaItems) && Objects.nonNull(mbpItems)) {
+
+      }
+
       return null;
     }
   };
