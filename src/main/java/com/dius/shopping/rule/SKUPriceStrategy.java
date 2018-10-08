@@ -47,6 +47,15 @@ public enum SKUPriceStrategy implements PricingRules {
      */
     @Override
     public BigDecimal applyPriceRule(EnumMap<SKU , List<Product>> items) {
+      final List<Product> atvItems = items.get(SKU.ATV);
+      if (Objects.nonNull(atvItems) && atvItems.size() >= 3) {
+        int divide = atvItems.size()/3;
+        BigDecimal remainder = BigDecimal.valueOf(atvItems.size() % 3);
+
+        return BigDecimal.valueOf(divide * 2).multiply(Price.ATV_DEFAULT).add(remainder.multiply(Price.ATV_DEFAULT));
+      } else if (Objects.nonNull(atvItems)) {
+        return BigDecimal.valueOf(atvItems.size()).multiply(Price.ATV_DEFAULT);
+      }
       return BigDecimal.ZERO;
     }
   },
